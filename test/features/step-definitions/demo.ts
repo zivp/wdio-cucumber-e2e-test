@@ -31,13 +31,13 @@ Then(/^URL should be match (.*)$/, async function(expectedURL : string) {
  * Web Inateractions
  */
  Given (/^A web page is opened$/,async function(){
-  await browser.url("/inputs");
+  await browser.url("/");
   await browser.setTimeout({implicit:15000, pageLoad:1000});
   await browser.maximizeWindow();
  })
 
  When(/^Perform web interactions$/, async function(){
-//input number 
+/*Input number 
 
 let number ='12345';
 let ele = await $('input[type="number"]');
@@ -50,5 +50,115 @@ for(let i = 0; i <number.length;i++){
  await ele.addValue(character);
  await browser.pause(2000);
 }
+*/
 
+/*
+Dropdown
+*/
+
+//*Assert on selected text*// 
+// let dropdownEle= await $('//select/option[@selected="selected"]');
+// let valueEle =await dropdownEle.getText();
+// chai.expect(valueEle).to.equal("Please select an option");
+
+//*Select By Spasipic value*//
+// let ddelement :  WebdriverIO.Element;
+// ddelement = await $('//*[@id="dropdown"]');
+// //await ddelement.selectByVisibleText("Option 2")
+// await ddelement.selectByAttribute("value","1")
+// await browser.pause(3000)
+
+//*Get list of options*//
+// let optionsArray : WebdriverIO.ElementArray =await $$('//*[@id="dropdown"]/option');
+// let arr = [];
+// for(let i = 0; i < optionsArray.length; i++)
+// {
+// let optionText : string = await optionsArray[i].getText();
+// console.log(`>> iterasion ${i}: ${optionText} >>`);
+// arr.push(optionText);
+// }
+
+// console.log(`>> Options : ${arr} >>`);
+// await browser.pause(2500)
+
+
+
+//*CheckBoxess*/
+// let checkboxArr : WebdriverIO.ElementArray = await $$('//*[@id="checkboxes"]/input');
+// let checkboxEle : WebdriverIO.Element = await $('//*[@id="checkboxes"]/input[2]');
+// let isSelected : boolean = await checkboxEle.isSelected();
+
+// chai.expect(isSelected).to.be.true;
+
+// for (let i = 0; i < checkboxArr.length; i++)
+// {
+//   let element = await checkboxArr[i]
+//   if (!await element.isSelected())
+//       await element.click()
+// }
+
+
+/*Handling Windows*/
+// await $(`=Click Here`).click();
+// await $(`=Elemental Selenium`).click();
+
+// let windowTitle = await browser.getTitle();
+// console.log(`>> Title : ${windowTitle}`);
+// let windowHandle = await browser.getWindowHandle();
+// let windowHandles = await browser.getWindowHandles();
+// for (let i = 0; i < windowHandles.length;i++)
+// {
+//    console.log(`>> window handle : ${windowHandles[i]}`)
+//    await browser.switchToWindow(windowHandles[i])
+//    windowTitle = await browser.getTitle();
+//    if (await windowTitle === "Elemental Selenium: Receive a Free, Weekly Tip on Using Selenium like a Pro")
+//    {
+//      await browser.switchToWindow(windowHandles[i]);
+//      console.log(`>> in chiled window : ${await $('<h1>').getText()}`)
+//      break;
+//    }
+// }
+// await browser.switchToWindow(windowHandle)
+// console.log(`>> window handle : ${await $('<h3>').getText()}`)
+//await browser.debug()
+
+
+
+/*Handling Alerts*/
+
+// await $('button=Click for JS Prompt').click();
+// if (await browser.isAlertOpen())
+// {
+//   let alertText = await browser.getAlertText();
+//   console.log(`>> alert : ${alertText}`)
+
+   
+//    await browser.sendAlertText('test alert ...');
+//    await browser.acceptAlert();
+// }
+
+
+/*File upload*/ 
+
+// await $("#file-upload").addValue(`${process.cwd()}/data/files/file-text.txt`);
+// await $("#file-submit").click();
+
+/*Frames*/
+
+// await $('=iFrame').click();
+// let frame = await $('#mce_0_ifr');
+// await browser.switchToFrame(frame);
+// await browser.pause(3000)
+// await $('#tinymce').click()
+// await browser.keys('Delete')
+// await $('#tinymce').addValue(`text example...`)
+// await browser.switchToParentFrame()
+
+
+/*Basic Scrooling*/
+
+await $('=WYSIWYG Editor').scrollIntoView()
+
+await browser.pause(3000)
+await browser.debug()
  })
