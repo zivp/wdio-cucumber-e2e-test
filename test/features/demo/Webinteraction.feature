@@ -1,6 +1,6 @@
 Feature: Web Intaracion 
 
-@demo
+#@demo
 Scenario Outline: Demo Web Intaracion  test
   Given A web page is opened 
   When Perform web interactions

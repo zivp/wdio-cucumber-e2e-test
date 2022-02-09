@@ -57,7 +57,8 @@ export const config: WebdriverIO.Config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
-        acceptInsecureCerts: true
+        acceptInsecureCerts: true,
+        timeouts: {implicit: 15000,pageLoad: 20000,script: 30000}
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -94,7 +95,7 @@ export const config: WebdriverIO.Config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://the-internet.herokuapp.com',
+    baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -161,7 +162,7 @@ export const config: WebdriverIO.Config = {
         // <string> (expression) only execute the features or scenarios with tags matching the expression
         tagExpression: '@demo',
         // <number> timeout for step definitions
-        timeout: 60000,
+        timeout: 300000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false,
         retry:0

@@ -1,12 +1,12 @@
 Feature: Demo Feature
 
 
-
+@demo
 Scenario Outline: run demo first test
   Given Google page is opened
   When Search with <SearchItem>
-  Then Click on the first result 
-  Then URL should be match <ExpectedURL>
+ # Then Click on the first result 
+ #Then URL should be match <ExpectedURL>
 
 
   Examples:

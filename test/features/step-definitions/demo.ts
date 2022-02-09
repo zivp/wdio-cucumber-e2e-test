@@ -5,6 +5,7 @@ Given(/^Google page is opened$/,async function(){
 console.log("open url in google");
 await browser.url("https://www.google.com");
 await browser.pause(3000);
+console.log(JSON.stringify(browser));
 })
 
 When(/^Search with (.*)$/,async function(searchItem : string) {
@@ -13,6 +14,7 @@ let element = await $(`[name=q]`);
 await element.setValue(searchItem);
 await element.keys("Enter");
 await browser.pause(2000);
+console.log(JSON.stringify(element));
 })
 
 Then(/^Click on the first result$/,async function(){
@@ -31,7 +33,7 @@ Then(/^URL should be match (.*)$/, async function(expectedURL : string) {
  * Web Inateractions
  */
  Given (/^A web page is opened$/,async function(){
-  await browser.url("/");
+  await browser.url("https://www.amazon.com/");
   await browser.setTimeout({implicit:15000, pageLoad:1000});
   await browser.maximizeWindow();
  })
@@ -157,8 +159,45 @@ Dropdown
 
 /*Basic Scrooling*/
 
-await $('=WYSIWYG Editor').scrollIntoView()
+//await $('=WYSIWYG Editor').scrollIntoView()
+
+
+
+/*table handle*/
+
+// let eleArrlength = await $$('//table[@id="table1"]/tbody/tr').length;
+// chai.expect(eleArrlength).to.equal(4);
+// console.log(`number od rows :  ${eleArrlength}`);
+
+
+// let eleArrRowlength = await $$('//table[@id="table1"]/thead/tr/th').length;
+// chai.expect(eleArrRowlength).to.equal(6);
+// console.log(`number od cols :  ${eleArrRowlength}`);
+
+
+// for (let i = 1; i <eleArrlength ;i++)
+// {
+//   for (let j = 1; j <eleArrRowlength;j++)
+//   {
+//   let eleCell = await $(`//*[@id="table1"]/tbody/tr[${i}]/td[${j}]`).getText();
+//   console.log(eleCell + "\n");
+//   }
+// }
+
+/*Advance Scrolling*/
 
 await browser.pause(3000)
-await browser.debug()
+await browser.execute(()=> {
+
+  window.scrollBy(0, window.innerHeight);
+
+});
+
+await browser.pause(3000)
+await browser.execute(()=> {
+
+  window.scrollBy(0, -window.innerHeight);
+  window.scrollBy(0, document.body.scrollTop);
+});
+//await browser.debug()
  })
