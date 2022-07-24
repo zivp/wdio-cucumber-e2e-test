@@ -1,0 +1,15 @@
+FROM selenium/hub:4.1.2-20220217
+
+#================================
+# Selenium Event Bus Configuration
+#=================================
+
+# Port where events are published
+EXPOSE 4442
+# Port where to subscribe for events
+EXPOSE 4443
+# Event Bus port
+EXPOSE 5557
+
+
+

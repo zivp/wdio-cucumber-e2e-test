@@ -1,6 +1,6 @@
 Feature: Inventory
 
-#@demo
+@demo
 Scenario Outline: Demo Inventory
   Given Login to Inventory web app
   Then inventory page should list <NumberOfProducts>
