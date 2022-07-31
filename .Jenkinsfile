@@ -6,7 +6,10 @@ pipeline {
         stage('Docker Build & Run - Node image') { 
             steps {
                 echo 'build node image & run npm install'
-                sh 'docker build -t node-image -f /var/jenkins_home/workspace/pipline/Dockerfile.app-test .'
+                sh '''
+                cd /var/jenkins_home/workspace/pipline/Dockerfile.app-test
+                docker build -t node-image -f Dockerfile.app-test .
+                '''
                 sh 'docker run --name node-test -p 8080:8080 -it node-image'
             }
           }
@@ -14,7 +17,10 @@ pipeline {
         stage('Docker Build & Run - allure + Selenium hub') {
                 steps {
                   echo 'upload allure + Selenium hub containers'
-                  sh 'docker build -t selenium-hub -f /var/jenkins_home/workspace/pipline/Dockerfile.selenium-hub .'
+                  sh '''
+                  cd /var/jenkins_home/workspace/pipline/Dockerfile
+                  docker build -t selenium-hub -f Dockerfile.selenium-hub .
+                  '''
                   sh 'docker compose up -d' 
             }
     }
