@@ -3,17 +3,12 @@ pipeline {
     stages {
         
       stage('Docker Build & Run - Node image') { 
-             steps {
-                echo 'build node image & run npm install'
-                   script
-                       {
-                        def dockerHome = tool 'DOCKER'
-                        env.PATH = "${dockerHome}/bin:/var/jenkins_home/workspace/webdriverIO-pipline@tmp/"
-                        docker.build("node-image", "-f ./var/jenkins_home/workspace/webdriverIO-pipline/Dockerfile.app-test .")
+                agent { docker{image 'Dockerfile.app-test'} }
+                steps {
                         sh 'docker run --name node-test -p 8080:8080 -it node-image'
-                        }
+                     }
             }
-          }
+          
       
         stage('Docker Build & Run - allure + Selenium hub') {
                 steps {
