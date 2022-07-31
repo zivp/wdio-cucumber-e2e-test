@@ -11,7 +11,7 @@ pipeline {
             }
           
       
-        stage('Docker Build & Run - allure + Selenium hub') {
+    /*    stage('Docker Build & Run - allure + Selenium hub') {
                 steps {
                   echo 'upload allure + Selenium hub containers'
                   sh '''
@@ -21,7 +21,7 @@ pipeline {
                   sh 'docker compose up -d' 
             }
     }
-    
+    */
         stage('npm test') {
             agent any
             steps {
