@@ -3,13 +3,10 @@ pipeline {
     stages {
         
       stage('Docker Build & Run - Node image') { 
-          environment {
-                  HOME="."
-                }
                 agent { dockerfile true } 
                 steps {
                         sh 'docker build -t node-image -f Dockerfile .'
-                        sh 'docker run --name node-test -p 8080:8080 -it node-image'
+                        sh 'docker run --rm node-image'
                      }
             }
           
