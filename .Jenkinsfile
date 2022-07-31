@@ -10,7 +10,6 @@ pipeline {
                        {
                         def dockerHome = tool 'myDocker'
                         env.PATH = "${dockerHome}/bin:${env.PATH}"
-                        sh 'service docker start'
                         docker.build("node-image", "-f ./Dockerfile.app-test .")
                         sh 'docker run --name node-test -p 8080:8080 -it node-image'
                         }

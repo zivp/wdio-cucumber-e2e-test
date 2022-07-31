@@ -3,6 +3,8 @@ WORKDIR /app-test
 ADD package*.json ./
 RUN npm install 
 ADD . . 
+CMD ["sh","service docker start"]
+
 
 
 
