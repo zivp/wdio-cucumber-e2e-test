@@ -3,7 +3,7 @@ pipeline {
  agent any
 
     stages {
-        stage('Docker Build & Run - Node image') { 
+  /*      stage('Docker Build & Run - Node image') { 
              steps {
                 echo 'build node image & run npm install'
                    script
@@ -15,7 +15,7 @@ pipeline {
                         }
             }
           }
-        
+ */       
         stage('Docker Build & Run - allure + Selenium hub') {
                 steps {
                   echo 'upload allure + Selenium hub containers'
