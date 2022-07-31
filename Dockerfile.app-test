@@ -3,7 +3,7 @@ WORKDIR /app-test
 ADD package*.json ./
 RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz \
   && tar xzvf docker-17.04.0-ce.tgz \
-  && mv docker/docker /usr/local/bin \
+  && mv docker/docker /var/jenkins_home/workspace/pipline\
   && rm -r docker docker-17.04.0-ce.tgz
 RUN npm install 
 ADD . . 
