@@ -8,9 +8,9 @@ pipeline {
                    script
                        {
                         def dockerHome = tool 'myDocker'
-                        env.PATH = "${dockerHome}/bin:${env.PATH}"
-                   //     docker.build("node-image", "-f ./var/jenkins_home/workspace/webdriverIO-pipline/Dockerfile.app-test .")
-                     //   sh 'docker run --name node-test -p 8080:8080 -it node-image'
+                     //   env.PATH = "${dockerHome}/bin:${env.PATH}"
+                        dockerHome.build("node-image", "-f ./var/jenkins_home/workspace/webdriverIO-pipline/Dockerfile.app-test .")
+                        sh 'docker run --name node-test -p 8080:8080 -it node-image'
                         }
             }
           }
