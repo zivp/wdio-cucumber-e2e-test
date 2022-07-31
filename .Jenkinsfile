@@ -1,11 +1,9 @@
 pipeline {
- agent any
-    stages {
-        
-      stage('Docker Build & Run - Node image') { 
-               agent {
+       agent {
                  docker { image 'node:16.13.1-alpine' }
-               }
+        }
+    stages {
+      stage('Docker Build & Run - Node image') { 
                    steps {
                    //     sh 'docker build -t node-image -f Dockerfile .'
                         //sh 'docker run node-image'
