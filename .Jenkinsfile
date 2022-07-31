@@ -10,7 +10,7 @@ pipeline {
                         def dockerHome = tool 'DOCKER'
                         env.PATH = "${dockerHome}/bin:/var/jenkins_home/workspace/webdriverIO-pipline@tmp/"
                         docker.build("node-image", "-f ./var/jenkins_home/workspace/webdriverIO-pipline/Dockerfile.app-test .")
-                        sh 'docker run --name node-test -p 8080:8080 -it node-image'
+                        bat 'docker run --name node-test -p 8080:8080 -it node-image'
                         }
             }
           }
@@ -18,11 +18,11 @@ pipeline {
         stage('Docker Build & Run - allure + Selenium hub') {
                 steps {
                   echo 'upload allure + Selenium hub containers'
-                  sh '''
+                  bat '''
                   cd /var/jenkins_home/workspace/webdriverIO-pipline
                   docker build -t selenium-hub -f Dockerfile.selenium-hub .
                   '''
-                  sh 'docker compose up -d' 
+                  bat 'docker compose up -d' 
             }
     }
     
@@ -30,7 +30,7 @@ pipeline {
             agent any
             steps {
                 echo 'run tests'
-                sh  'npm run wdio'
+                bat  'npm run wdio'
                
             }
         }
