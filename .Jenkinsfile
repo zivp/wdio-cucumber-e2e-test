@@ -3,7 +3,7 @@ pipeline {
     stages {
         
       stage('Docker Build & Run - Node image') { 
-                agent { docker{image './Dockerfile.app-test'} }
+                agent { './Dockerfile.app-test' true } 
                 steps {
                         sh 'docker run --name node-test -p 8080:8080 -it node-image'
                      }
