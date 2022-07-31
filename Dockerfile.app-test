@@ -3,3 +3,6 @@ WORKDIR /app-test
 ADD package*.json ./
 RUN npm install 
 ADD . . 
+
+
+
