@@ -4,11 +4,11 @@ pipeline {
 
     stages {
         stage('Docker Build & Run - Node image') { 
-            dir("/var/jenkins_home/workspace/pipline") {
+             steps {
                 echo 'build node image & run npm install'
                    script
                        {
-                        docker.build("node-image", "-f ./Dockerfile.app-test .")
+                        docker.build("node-image", "-f ./var/jenkins_home/workspace/pipline/Dockerfile.app-test .")
                         sh 'docker run --name node-test -p 8080:8080 -it node-image'
                         }
             }
