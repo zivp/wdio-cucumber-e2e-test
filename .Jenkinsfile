@@ -5,8 +5,9 @@ pipeline {
       stage('Docker Build & Run - Node image') { 
                 agent { dockerfile true } 
                 steps {
-                        sh 'docker build -t node-image -f Dockerfile .'
+                   //     sh 'docker build -t node-image -f Dockerfile .'
                         //sh 'docker run node-image'
+                         sh 'node --version'
                      }
             }
           
@@ -21,7 +22,7 @@ pipeline {
                   sh 'docker compose up -d' 
             }
     }
-    
+    */
         stage('npm test') {
             agent any
             steps {
@@ -30,6 +31,5 @@ pipeline {
                
             }
         }
-        */
     }
 }
