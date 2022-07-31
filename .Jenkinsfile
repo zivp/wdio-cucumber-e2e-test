@@ -1,5 +1,8 @@
 pipeline {
  agent any
+ environment {
+    docker = "C:/Program Files/Docker/Docker/resources/bin/:${env.PATH}"
+  }
     stages {
         
       stage('Docker Build & Run - Node image') { 
