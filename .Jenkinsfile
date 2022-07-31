@@ -1,12 +1,9 @@
 pipeline {
  agent any
- environment {
-    docker = "C:/Program Files/Docker/Docker/resources/bin/:${env.PATH}"
-  }
     stages {
         
       stage('Docker Build & Run - Node image') { 
-                agent { docker{image 'Dockerfile.app-test'} }
+                agent { docker{image './Dockerfile.app-test'} }
                 steps {
                         sh 'docker run --name node-test -p 8080:8080 -it node-image'
                      }
