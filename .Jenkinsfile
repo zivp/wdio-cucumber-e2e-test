@@ -6,7 +6,7 @@ pipeline {
                 agent { dockerfile true } 
                 steps {
                         sh 'docker build -t node-image -f Dockerfile .'
-                        sh 'docker run --rm node-image'
+                        sh 'docker run node-image'
                      }
             }
           
