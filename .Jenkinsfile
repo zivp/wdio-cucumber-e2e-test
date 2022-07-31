@@ -21,7 +21,7 @@ pipeline {
                   sh 'docker compose up -d' 
             }
     }
-    */
+    
         stage('npm test') {
             agent any
             steps {
@@ -30,5 +30,6 @@ pipeline {
                
             }
         }
+        */
     }
 }
