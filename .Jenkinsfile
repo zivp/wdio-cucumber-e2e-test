@@ -1,7 +1,7 @@
 pipeline {
  agent any
     stages {
-       stage('Docker Build & Run - Node image') { 
+     /*  stage('Docker Build & Run - Node image') { 
              steps {
                 echo 'build node image & run npm install'
                    script
@@ -24,6 +24,7 @@ pipeline {
                   sh 'docker compose up -d' 
             }
     }
+    */
         stage('npm test') {
             agent any
             steps {
