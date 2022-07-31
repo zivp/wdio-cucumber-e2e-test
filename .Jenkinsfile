@@ -7,8 +7,8 @@ pipeline {
                 echo 'build node image & run npm install'
                    script
                        {
-                       // def dockerHome = tool 'myDocker'
-                     //   env.PATH = "${dockerHome}/bin:${env.PATH}"
+                        def dockerHome = tool 'myDocker'
+                        env.PATH = "${dockerHome}/bin:/var/jenkins_home/workspace/webdriverIO-pipline@tmp/"
                         docker.build("node-image", "-f ./var/jenkins_home/workspace/webdriverIO-pipline/Dockerfile.app-test .")
                         sh 'docker run --name node-test -p 8080:8080 -it node-image'
                         }
