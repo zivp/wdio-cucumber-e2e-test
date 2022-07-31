@@ -1,13 +1,10 @@
 pipeline {
   
-    agent { 
+    agent any
         
-       dockerfile true
-        }
-
     stages {
         stage('Docker Build - Node image') {
-            agent any
+            agent {dockerfile.app-test true}
             steps {
                 echo 'build node image & run npm install'
                 sh 'docker build -t node-image -f Dockerfile.app-test .'
@@ -15,7 +12,7 @@ pipeline {
             }
         }
         stage('Docker Build - allure + Selenium hub') {
-            agent any
+             agent {dockerfile.selenium-hub true}
             steps {
                 echo 'upload allure + Selenium hub containers'
                 sh 'docker build -t selenium-hub -f Dockerfile.selenium-hub .'
