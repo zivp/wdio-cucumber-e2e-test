@@ -1,7 +1,8 @@
 pipeline {
  agent any
     stages {
-     /*  stage('Docker Build & Run - Node image') { 
+        /*
+      stage('Docker Build & Run - Node image') { 
              steps {
                 echo 'build node image & run npm install'
                    script
@@ -13,18 +14,18 @@ pipeline {
                         }
             }
           }
-      
+      */
         stage('Docker Build & Run - allure + Selenium hub') {
                 steps {
                   echo 'upload allure + Selenium hub containers'
                   sh '''
-                  cd /var/jenkins_home/workspace/webdriverIO-pipline/Dockerfile
+                  cd /var/jenkins_home/workspace/webdriverIO-pipline
                   docker build -t selenium-hub -f Dockerfile.selenium-hub .
                   '''
                   sh 'docker compose up -d' 
             }
     }
-    */
+    
         stage('npm test') {
             agent any
             steps {
