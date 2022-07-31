@@ -10,6 +10,7 @@ pipeline {
                        {
                         def dockerHome = tool 'myDocker'
                         env.PATH = "${dockerHome}/bin:${env.PATH}"
+                        sg 'docker run -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean'
                         docker.build("node-image", "-f ./Dockerfile.app-test .")
                         sh 'docker run --name node-test -p 8080:8080 -it node-image'
                         }
