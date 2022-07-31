@@ -3,8 +3,10 @@ pipeline {
     stages {
         
       stage('Docker Build & Run - Node image') { 
-                agent { dockerfile true } 
-                steps {
+               agent {
+                 docker { image 'node:16.13.1-alpine' }
+               }
+                   steps {
                    //     sh 'docker build -t node-image -f Dockerfile .'
                         //sh 'docker run node-image'
                          sh 'node --version'
