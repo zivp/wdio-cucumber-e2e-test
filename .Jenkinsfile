@@ -3,6 +3,10 @@ pipeline {
  agent any
 
     stages {
+        stage('Initialize docker') {
+          def dockerHome = tool 'myDocker'
+          env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
         stage('Docker Build & Run - Node image') { 
              steps {
                 echo 'build node image & run npm install'
